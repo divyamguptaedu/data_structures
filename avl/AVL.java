@@ -39,8 +39,8 @@ public class AVL {
 			size++;
 		} else {
 			if (data < root.data) {
-				node.left = addHelper(node.left, data);
-				if (countBF(node) == 2) {
+				root.left = addHelper(root.left, data);
+				if (countBF(root) == 2) {
 					if (data < root.left.data) {
 						root = rotateRight(root);
 					} else {
@@ -48,8 +48,8 @@ public class AVL {
 					}
 				}
 			} else if (data > root.data) {
-				node.right = addHelper(node.right, data);
-				if (countBF(node) == -2) {
+				root.right = addHelper(root.right, data);
+				if (countBF(root) == -2) {
 					if (data > root.right.data) {
 						root = rotateLeft(root);
 					} else {
@@ -126,12 +126,12 @@ public class AVL {
 
 	private Node rotateLeftRight(Node a) {
 		a.left = rotateLeft(a.left);
-		return rotateRight(a)
+		return rotateRight(a);
 	}
 
 	private Node rotateRightLeft(Node a) {
 		a.right = rotateRight(a.right);
-		return rotateRight(a)
+		return rotateRight(a);
 	}
 
 	 public List<Integer> preorder() {
